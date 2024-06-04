@@ -8,6 +8,7 @@ for i in range(n):
         total += li[j]
         if total >= s:
             ans = min(ans, j-i+1)
+            break
 
 if ans < 1e9:
     print(ans)
