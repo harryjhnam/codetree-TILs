@@ -11,6 +11,9 @@ for i in li:
 res = 0
 for n in cnt:
     if k-n in cnt:
-        res += cnt[n] * cnt[k-n]
+        if n == k-n:
+            res += cnt[n] * (cnt[n]-1)
+        else:
+            res += cnt[n] * cnt[k-n]
 
 print(res//2)
