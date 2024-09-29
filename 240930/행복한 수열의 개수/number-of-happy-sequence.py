@@ -12,7 +12,6 @@ for i in range(n):
     n_cont = 0
 
     for j in range(n):
-        
         if prev != mat[i][j]:
             n_cont = 1
         else:
@@ -31,7 +30,6 @@ for i in range(n):
     n_cont = 0
     
     for j in range(n):
-        
         if prev != mat[j][i]:
             n_cont = 1
         else:
@@ -41,6 +39,6 @@ for i in range(n):
             res += 1
             break
     
-        prev = mat[i][j]
+        prev = mat[j][i]
 
 print(res)
