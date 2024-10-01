@@ -30,11 +30,11 @@ for i in range(n):
         blocks = get_blocks(i, j)
         for block in blocks:
             s = 0
-            for (i,j) in block:
-                if not is_in_mat(i, j):
+            for (c1,c2) in block:
+                if not is_in_mat(c1, c2):
                     s = -1
                     break
-                s += mat[i][j]
+                s += mat[c1][c2]
             res = max(res, s)
               
 print(res)
