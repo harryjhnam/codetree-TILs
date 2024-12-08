@@ -24,7 +24,7 @@ for i in range(n):
     for j in range(n):
         for k in range(n, -1, -1):
             mining_area = get_mining_area(i, j, k)
-            n_area = 0
+            n_area = len(mining_area)
             n_golds = 0
             for x, y in mining_area:
                 if not is_valid_corr(x, y, n):
