@@ -17,18 +17,19 @@ def is_valid_corr(i, j, n):
     return 0<=i<n and 0<=j<n
 
 def is_profitable(n_golds, gold_cost, n_area):
-    return n_golds*gold_cost >= n_area
+    return (n_golds*gold_cost) >= n_area
 
 ans = 0
 for i in range(n):
     for j in range(n):
-        for k in range(n, 0, -1):
+        for k in range(n, -1, -1):
             mining_area = get_mining_area(i, j, k)
-            n_area = len(mining_area)
+            n_area = 0
             n_golds = 0
             for x, y in mining_area:
                 if not is_valid_corr(x, y, n):
                     continue
+                n_area += 1
                 n_golds += mat[x][y]
             if n_golds < ans:
                 break
