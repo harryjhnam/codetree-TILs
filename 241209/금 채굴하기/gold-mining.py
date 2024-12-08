@@ -29,7 +29,6 @@ for i in range(n):
             for x, y in mining_area:
                 if not is_valid_corr(x, y, n):
                     continue
-                n_area += 1
                 n_golds += mat[x][y]
             if n_golds < ans:
                 break
