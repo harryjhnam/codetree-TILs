@@ -22,7 +22,7 @@ def is_profitable(n_golds, gold_cost, n_area):
 ans = 0
 for i in range(n):
     for j in range(n):
-        for k in range(n//2, 0, -1):
+        for k in range(n, 0, -1):
             mining_area = get_mining_area(i, j, k)
             n_area = len(mining_area)
             n_golds = 0
