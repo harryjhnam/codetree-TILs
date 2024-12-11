@@ -30,11 +30,15 @@ def get_rectangles(start_i, start_j):
     for steps_in_dir1 in range(1, max_steps_in_dir1 + 1):
 
         max_steps_in_dir2 = (start_i + 1) - steps_in_dir1 + 1
+
+        # TODO: 직사각형이 아닌 대각선형으로 나오는 경우에 대한 예외 처리
+        if max_steps_in_dir2 == 1:
+            continue
+        if max_steps_in_dir1 == 1:
+            max_steps_in_dir2 = 1
+
         for steps_in_dir2 in range(1, max_steps_in_dir2 + 1):
-            
-            if not (steps_in_dir1 == 1 and steps_in_dir2 == 1) and (steps_in_dir1 == 1 or steps_in_dir2 == 1):
-                continue
-                
+
             i, j = start_i, start_j
             locs = []
             for d in range(1, 5):
