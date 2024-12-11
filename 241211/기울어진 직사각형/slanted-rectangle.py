@@ -31,7 +31,10 @@ def get_rectangles(start_i, start_j):
 
         max_steps_in_dir2 = (start_i + 1) - steps_in_dir1 + 1
         for steps_in_dir2 in range(1, max_steps_in_dir2 + 1):
-
+            
+            if not (steps_in_dir1 == 1 and steps_in_dir2 == 1) and (steps_in_dir1 == 1 or steps_in_dir2 == 1):
+                continue
+                
             i, j = start_i, start_j
             locs = []
             for d in range(1, 5):
