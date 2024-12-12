@@ -22,6 +22,7 @@ def get_rectangles(start_i, start_j):
             if len(locs) == n_locs:
                 break
         i, j = i - di[d], j - dj[d]
+
         return locs, i, j
 
     res = []
@@ -37,17 +38,13 @@ def get_rectangles(start_i, start_j):
             for d in range(1, 5):
                 dir_locs, i, j = _get_dir(d, i, j, steps_in_dir1, steps_in_dir2)
                 locs += dir_locs
-                if i == start_i and j == start_j:
-                    break
-            locs = list(set(locs))
-            res.append(locs)
+            if i == start_i and j == start_j:
+                locs = list(set(locs))
+                res.append(locs)
     
     return res
 
 ans = 0
-for row in mat:
-    ans = max(ans, max(row))
-
 for start_i in range(n):
     for start_j in range(n):
         for rec in get_rectangles(start_i, start_j):
