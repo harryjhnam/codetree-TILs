@@ -5,7 +5,7 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 def is_including_negative(grid, row_min, row_max, col_min, col_max):
     for i in range(row_min, row_max+1):
         for j in range(col_min, col_max+1):
-            if grid[i][j] < 0:
+            if grid[i][j] <= 0:
                 return True
     return False
 
