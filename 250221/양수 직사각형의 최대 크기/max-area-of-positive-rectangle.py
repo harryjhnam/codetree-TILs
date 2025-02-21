@@ -12,7 +12,7 @@ def is_including_negative(grid, row_min, row_max, col_min, col_max):
 def get_rectangle_size(row_min, row_max, col_min, col_max):
     return (row_max-row_min+1) * (col_max-col_min+1)
 
-answer = 0
+answer = -1
 for row_min in range(n):
     for col_min in range(m):
         for row_max in range(n):
