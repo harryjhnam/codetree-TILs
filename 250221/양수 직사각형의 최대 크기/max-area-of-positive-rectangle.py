@@ -15,7 +15,7 @@ def get_rectangle_size(row_min, row_max, col_min, col_max):
 answer = 0
 for row_min in range(n):
     for col_min in range(m):
-        for row_max in range(m):
+        for row_max in range(n):
             for col_max in range(m):
                 if is_including_negative(grid, row_min, row_max, col_min, col_max):
                     continue
