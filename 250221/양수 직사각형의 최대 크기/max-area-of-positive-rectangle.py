@@ -15,10 +15,11 @@ def get_rectangle_size(row_min, row_max, col_min, col_max):
 answer = -1
 for row_min in range(n):
     for col_min in range(m):
-        for row_max in range(n):
-            for col_max in range(m):
+        for row_max in range(row_min, n):
+            for col_max in range(col_min, m):
                 if is_including_negative(grid, row_min, row_max, col_min, col_max):
                     continue
-                answer = max(answer, get_rectangle_size(row_min, row_max, col_min, col_max))
+                size = get_rectangle_size(row_min, row_max, col_min, col_max)
+                answer = max(answer, size)
 
 print(answer)
