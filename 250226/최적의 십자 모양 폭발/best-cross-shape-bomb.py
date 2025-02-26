@@ -21,10 +21,15 @@ def deploy_bomb(grid, i, j):
 def apply_gravity(grid):
     global n
     for j in range(n):
-        for i in range(n-1, 0, -1):
-            if grid[i][j] == 0:
-                for x in range(i, 0, -1):
-                    grid[x][j], grid[x-1][j] = grid[x-1][j], grid[x][j]
+        mem = []
+        for i in range(n):
+            if grid[i][j] != 0:
+                mem.append(grid[i][j])
+        for i in range(n-1, -1, -1):
+            if mem:
+                grid[i][j] = mem.pop()
+            else:
+                grid[i][j] = 0
     return grid
 
 def count_neighbors(grid):
@@ -47,8 +52,13 @@ for i in range(n):
     for j in range(n):
         new_grid = deepcopy(grid)
         new_grid = deploy_bomb(new_grid, i, j)
+        # print(new_grid)
+        # print()
         new_grid = apply_gravity(new_grid)
+        # print(new_grid)
+        # print()
         res = count_neighbors(new_grid)
         answer = max(answer, res)
 
 print(answer)
+
