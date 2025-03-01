@@ -1,7 +1,6 @@
-n, m, k = map(int, input().split())
+# 변수 선언 및 입력:
+n, m, k = tuple(map(int, input().split()))
 nums = list(map(int, input().split()))
-
-# Please write your code here.
 pieces = [1 for _ in range(k)]
 
 ans = 0
