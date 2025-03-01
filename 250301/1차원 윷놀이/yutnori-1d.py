@@ -2,30 +2,33 @@ n, m, k = map(int, input().split())
 nums = list(map(int, input().split()))
 
 # Please write your code here.
-locs = [0] * k
-answer = 0
+locs = [1] * k
 
-def calc():
+def count_finished():
     global locs
     score = 0
     for loc in locs:
-        score += (loc >= m-1)
+        if loc >= m:
+            score += 1
     return score
 
+
+answer = 0
 def make_move(n_moves):
-    global locs, nums, answer
-    
-    answer = max(answer, calc())
+    global answer, n, k
 
     if n_moves == n:
+        answer = max(answer, count_finished())
         return
 
     for i in range(k):
-        if locs[i] >= m-1:
-            continue
         locs[i] += nums[n_moves]
-        make_move(n_moves + 1)
+        make_move(n_moves+1)
         locs[i] -= nums[n_moves]
+        
+    return
 
 make_move(0)
+
 print(answer)
+
