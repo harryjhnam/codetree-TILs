@@ -3,21 +3,20 @@ n = int(input())
 # Please write your code here.
 answer = 0
 
-def append_numbers(number):
-    global answer
+def append_numbers(numbers):
+    global n, answer
 
-    if len(number) == n:
+    if len(numbers) == n:
         answer += 1
-        return 
+        return
 
-    if len(number) > n:
-        return 
+    if len(numbers) > n:
+        return
 
     for i in range(1, n+1):
-        append_numbers(number + [i]*i)
-
-    return 
+        append_numbers(numbers + [i]*i)
+        
+    return
 
 append_numbers([])
-
 print(answer)
