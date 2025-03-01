@@ -17,11 +17,15 @@ answer = 0
 def make_move(n_moves):
     global answer, n, k
 
+    answer = max(answer, count_finished())
+
     if n_moves == n:
-        answer = max(answer, count_finished())
         return
 
     for i in range(k):
+        if locs[i] >= m:
+            continue
+            
         locs[i] += nums[n_moves]
         make_move(n_moves+1)
         locs[i] -= nums[n_moves]
