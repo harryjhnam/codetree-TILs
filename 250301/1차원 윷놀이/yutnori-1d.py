@@ -2,37 +2,41 @@ n, m, k = map(int, input().split())
 nums = list(map(int, input().split()))
 
 # Please write your code here.
-locs = [1] * k
+pieces = [1 for _ in range(k)]
 
-def count_finished():
-    global locs
+ans = 0
+
+
+# 점수를 계산합니다.
+def calc():
     score = 0
-    for loc in locs:
-        if loc >= m:
-            score += 1
+    for piece in pieces:
+        score += (piece >= m)
+    
     return score
 
 
-answer = 0
-def make_move(n_moves):
-    global answer, n, k
-
-    answer = max(answer, count_finished())
-
-    if n_moves == n:
+def find_max(cnt):
+    global ans
+    
+    # 말을 직접 n번 움직이지 않아도
+    # 최대가 될 수 있으므로 항상 답을 갱신합니다.
+    ans = max(ans, calc())
+    
+    # 더 이상 움직일 수 없으면 종료합니다.
+    if cnt == n: 
         return
-
+	
     for i in range(k):
-        if locs[i] >= m:
+        # 움직여서 더 이득이 되지 않는
+        # 말은 더 이상 움직이지 않습니다.
+        if pieces[i] >= m:
             continue
-            
-        locs[i] += nums[n_moves]
-        make_move(n_moves+1)
-        locs[i] -= nums[n_moves]
         
-    return
+        pieces[i] += nums[cnt]
+        find_max(cnt + 1)
+        pieces[i] -= nums[cnt]
 
-make_move(0)
 
-print(answer)
-
+find_max(0)
+print(ans)
