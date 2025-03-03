@@ -8,8 +8,7 @@ from collections import deque
 def make_move(i, j):
     global n, grid
 
-    res_i, res_j = i, j
-    next_max = 0
+    next_max = (0, -i, -j)
 
     dis = [1,0,0,-1]
     djs = [0,1,-1,0]
@@ -33,14 +32,13 @@ def make_move(i, j):
                 # bigger than the starting point
                 continue
 
-            if grid[next_v[0]][next_v[1]] >= next_max:
-                res_i, res_j = next_v
-                next_max = grid[next_v[0]][next_v[1]]
+            if (grid[next_v[0]][next_v[1]], -next_v[0], -next_v[1]) > next_max:
+                next_max = (grid[next_v[0]][next_v[1]], -next_v[0], -next_v[1])
 
             visited[next_v[0]][next_v[1]] = 1
             q.append(next_v)
 
-    return res_i, res_j
+    return -next_max[1], -next_max[2]
 
 r, c = r-1, c-1
 for _ in range(k):
