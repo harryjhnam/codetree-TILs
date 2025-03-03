@@ -4,7 +4,7 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 # Please write your code here.
 from collections import deque
 
-visited = [[0]*m for _ in range(m)]
+visited = [[0]*m for _ in range(n)]
 
 def is_valid(i, j):
     global n, m, grid, visited
