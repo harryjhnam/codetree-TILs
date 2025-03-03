@@ -8,7 +8,7 @@ visited = [[0]*m for _ in range(m)]
 
 def is_valid(i, j):
     global n, m, grid, visited
-    if not (0<=i<n and 0<=j<n):
+    if not (0<=i<n and 0<=j<m):
         return False
     if visited[i][j]:
         return False
