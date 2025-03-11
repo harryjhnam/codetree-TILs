@@ -6,6 +6,7 @@ coin = list(map(int, input().split()))
 # dp[N1], dp[N2], ... = 1
 
 dp = [-1] * (M+1)
+coin = [c for c in coin if c <= M]
 for c in coin:
     dp[c] = 1
 
